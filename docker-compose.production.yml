@@ -7,8 +7,6 @@ services:
     restart: always
     depends_on:
       - db
-    env_file:
-      - .env
     environment:
       APP_ENV: prod
       APP_SECRET: ${APP_SECRET:-81c7bd7cb0ea62ce6e3506096326b5be}
