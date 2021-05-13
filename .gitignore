@@ -1,0 +1,20 @@
+###> Task ###
+/.task-env
+###< Task ###
+
+###> docker ###
+/.env
+/docker-compose.override.yml
+###< docker ###
+
+###> volumes ###
+/var/
+###< volumes ###
+
+###> editors ###
+/nbproject/*
+/.settings
+/.buildpath
+/.project
+.idea
+###< editors ###

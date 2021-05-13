@@ -1,0 +1,5 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    trusted_proxies: '127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
+    php_errors:
+        log: true 

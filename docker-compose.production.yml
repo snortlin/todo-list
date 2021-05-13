@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+  # Main PHP application
+  app:
+    image: todo-list-app
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      APP_ENV: prod
+      APP_SECRET: ${APP_SECRET:-81c7bd7cb0ea62ce6e3506096326b5be}
+      DATABASE_DSN: ${APP_DATABASE_DSN:-postgres://postgres:postgres@db:5432/todo-list?serverVersion=13.2}
+    volumes:
+      - app-public-data:/var/www/app/public:rw
+    networks:
+      - app
+
+  # Public HTTP server
+  nginx:
+    image: nginx:latest
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - 8082:80
+    volumes:
+      - app-public-data:/var/www/app/public:ro
+      - ${DOCKER_VOLUME_NGINX_CONF_PATH:-./config/nginx/conf.d}:/etc/nginx/conf.d:ro,cached
+    networks:
+      - app
+
+  # Main database
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DATABASE:-todo-list}
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
+    ports:
+      - 5433:5432
+    networks:
+      - app
+
+volumes:
+  app-public-data:
+  db-data:
+
+networks:
+  app:
