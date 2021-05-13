@@ -27,7 +27,7 @@ services:
     depends_on:
       - app
     ports:
-      - 8082:80
+      - 8080:80
     volumes:
       - ./app/public:/var/www/app/public:ro
       - ${DOCKER_VOLUME_NGINX_CONF_PATH:-./config/nginx/conf.d}:/etc/nginx/conf.d:ro,cached
