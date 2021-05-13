@@ -12,9 +12,7 @@
    $ docker-compose up -d
    ```
 
-3. Go to http://localhost:8080
-
-4. Go to OpenAPI Specification (with user testing): http://localhost:8080/api
+3. Go to http://localhost:8080/api
 
 ### PHP Static Analysis
 
@@ -29,10 +27,6 @@ Simply run:
 $ docker-compose exec app php bin/phpunit
 ```
 
-## Production
-
-### Installation
-
 1. Build application:
    ```sh
    $ docker-compose -f docker-compose.build.yml build --pull
@@ -43,9 +37,7 @@ $ docker-compose exec app php bin/phpunit
    $ docker-compose -f docker-compose.production.yml up -d
    ```
 
-3. Go to http://localhost:8080
-
-4. Go to OpenAPI Specification: http://localhost:8080/api
+3. Go to http://localhost:8080/api
 
 ## Build
 

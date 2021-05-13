@@ -31,3 +31,7 @@ Hlavní projektové technologie:
   - PHPStan
 - PostgreSQL
 - NGINX
+
+Aplikaci lze jednoduše plně spustit v Docker s pomocí Docker Compose. Spolu s aplikací se spustí i databáze PostgreSQL,
+ve které aplikace za pomocí migrací vytvoří databázové schéma. Take se spustí webový server NGINX. API endpoint je dostupný
+na adrese http://localhost:8080/api, kde je též automaticky generovaná OpenAPI dokumentace s možností uživatelského testování pomocí GUI.
